@@ -1,0 +1,266 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>Task Manager App</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- App favicon -->
+    <link rel="shortcut icon" href="assets/images/favicon.ico">
+
+    <!-- third party css -->
+    <link href="assets/css/vendor/jquery-jvectormap-1.2.2.css" rel="stylesheet" type="text/css" />
+    <!-- third party css end -->
+
+    <!-- App css -->
+    <link href="assets/css/icons.min.css" rel="stylesheet" type="text/css" />
+    <link href="assets/css/app.min.css" rel="stylesheet" type="text/css" id="app-style" />
+    <link rel="stylesheet" href="assets/css/style.css">
+  </head>
+  <body class="loading" data-layout-color="dark" data-leftbar-theme="dark" data-layout-mode="fluid"
+    data-rightbar-onstart="true">
+    <!-- Begin page -->
+    <div class="wrapper">
+        <!-- ========== Left Sidebar Start ========== -->
+        <div class="leftside-menu">
+
+            <!-- LOGO -->
+            <a href="index.html" class="logo text-center logo-light">
+                <span class="logo-lg">
+                    <img src="assets/images/logo.png" alt="" height="16">
+                </span>
+                <span class="logo-sm">
+                    <img src="assets/images/logo_sm.png" alt="" height="16">
+                </span>
+            </a>
+
+            <div class="h-100" id="leftside-menu-container" data-simplebar>
+                <ul class="side-nav" id="parentDashboard">
+                    <li class="side-nav-title side-nav-item">All Dashboards(8)</li>
+
+                    <li class="side-nav-item">
+                        <a href="#sidebarDashboards" aria-controls="sidebarDashboards" class="side-nav-link">
+                            <i class="uil-home-alt"></i>
+                            <span> Dashboards </span>
+                        </a>
+                    </li>
+
+                    <li class="side-nav-item" id="currentDashboard" data-bs-toggle="modal"
+                        data-bs-target="#login-modal">
+                        <a href="#sidebarDashboards" aria-controls="sidebarDashboards" class="side-nav-link">
+                            <i class="uil-home-alt"></i>
+                            <span> Create New Dashboard </span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- add new dashboard modal start -->
+
+        <div id="login-modal" class="modal fade" tabindex="-1" role="dialog" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-content" type="content">
+                    <div class="modal-body">
+                        <div class="text-center mt-2 mb-4 d-flex justify-content-between">
+                            <a href="index.html" class="text-success">
+                                <span><img src="assets/images/logo-light.png" alt="" height="18"></span>
+                            </a>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-hidden="true"></button>
+                        </div>
+
+                        <form action="#" class="ps-3 pe-3">
+
+                            <div class="mb-3">
+                                <label for="" class="form-label">Dashboard Name</label>
+                                <input class="form-control" type="text" id="dashboardName" required=""
+                                    placeholder="Dashboard Name">
+                            </div>
+                            <div class="mb-3 text-center">
+                                <button class="btn rounded-pill btn-primary" type="submit"
+                                    onclick="createNewDashboard()">Create</button>
+                            </div>
+
+                        </form>
+
+                    </div>
+                </div><!-- /.modal-content -->
+            </div><!-- /.modal-dialog -->
+        </div>
+        <!-- dashboard modal end -->
+
+        <div class="content-page">
+            <div class="content">
+                <div class="navbar-custom">
+                    <div class="d-flex align-items-center">
+                        <button class="button-menu-mobile open-left">
+                            <i class="mdi mdi-menu left-bar-icons"></i>
+                        </button>
+                        <h2 class="page-title">Platform Launch</h2>
+                    </div>
+                </div>
+                <div class="container-fluid">
+
+                    <div class="row mt-3" id="tasksRow">
+                        <!-- Dynamic Tasks-->
+                        <div class="col-lg-3" id="addTaskContainer" data-bs-toggle="modal"
+                            data-bs-target="#standard-addtask-modal">
+                            <div class="card widget-flat">
+                                <div class="card-body text-center">
+                                    <svg xmlns="http://www.w3.org/2000/svg" version="1.1"
+                                        xmlns:xlink="http://www.w3.org/1999/xlink" width="116" x="0" y="0"
+                                        viewBox="0 0 426.667 426.667" style="enable-background:new 0 0 512 512"
+                                        xml:space="preserve" class="">
+                                        <g>
+                                            <path
+                                                d="M405.332 192H234.668V21.332C234.668 9.559 225.109 0 213.332 0 201.559 0 192 9.559 192 21.332V192H21.332C9.559 192 0 201.559 0 213.332c0 11.777 9.559 21.336 21.332 21.336H192v170.664c0 11.777 9.559 21.336 21.332 21.336 11.777 0 21.336-9.559 21.336-21.336V234.668h170.664c11.777 0 21.336-9.559 21.336-21.336 0-11.773-9.559-21.332-21.336-21.332zm0 0"
+                                                fill="#828da0" opacity="1" data-original="#000000" class=""></path>
+                                        </g>
+                                    </svg>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- END wrapper -->
+
+    <!-- details modal start-->
+    <div id="standard-modal-view" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="standard-modalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content details-modal p-1">
+                <div class="modal-header">
+                    <h4 class="modal-title" id="standard-modalLabel">Research Pricing point of various competitors and
+                        trial different business models</h4>
+                </div>
+                <div class="modal-body">
+                    Lorem, ipsum dolor sit amet consectetur adipisicing elit. Quisquam aliquid incidunt atque asperiores
+                    rerum facilis in necessitatibus, fuga magni a similique nam corporis hic doloribus, quasi minus
+                    voluptate aperiam? Distinctio.
+                    <h5>Subtasks</h5>
+                    <div class="form-check mb-1">
+                        <div class="ms-2">
+                            <input class="form-check-input mt-2" type="checkbox" value="" id="flexCheckChecked" checked>
+                            <label class="form-check-label" for="flexCheckChecked">
+                                Checked checkbox
+                            </label>
+                        </div>
+                    </div>
+                    <div class="form-check mb-1">
+                        <div class="ms-2">
+                            <input class="form-check-input mt-2" type="checkbox" value="" id="flexCheckChecked" checked>
+                            <label class="form-check-label" for="flexCheckChecked">
+                                Checked checkbox
+                            </label>
+                        </div>
+                    </div>
+                    <div class="form-check">
+                        <div class="ms-2">
+                            <input class="form-check-input mt-2" type="checkbox" value="" id="flexCheckChecked" checked>
+                            <label class="form-check-label" for="flexCheckChecked">
+                                Checked checkbox
+                            </label>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-light" data-bs-dismiss="modal">Close</button>
+                </div>
+
+            </div><!-- /.modal-content -->
+        </div><!-- /.modal-dialog -->
+    </div><!-- /.modal -->
+    <!-- details modal end -->
+
+    <!-- edit details modal start-->
+    <div id="standard-edittask-modal" class="modal fade" tabindex="-1" role="dialog"
+        aria-labelledby="standard-modalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content" type="content">
+                <div class="modal-body">
+                    <form action="#" class="ps-3 pe-3">
+
+                        <div class="mb-3">
+                            <label for="" class="form-label text-white">Title</label>
+                            <input class="form-control add-task" type="text" required="" placeholder="Task Titile">
+                        </div>
+                        <label for="" class="form-label text-white">Descirption</label>
+                        <div class=" mb-3">
+                            <textarea class="form-control add-task task-description" value="Lorem, ipsum dolor sit amet consectetur adipisicing elit. Quisquam aliquid incidunt atque asperiores
+                        rerum facilis in necessitatibus, fuga magni a similique nam corporis hic doloribus, quasi minus
+                        voluptate aperiam? Distinctio." placeholder="e.g Reasearch and analysis of SEO"></textarea>
+                        </div>
+                        <div class="mb-3 subtasks">
+                            <label for="" class="form-label text-white">Subtasks</label>
+                            <div class="d-flex gap-2 align-items-center justify-content-center">
+                                <input class="form-control add-task mb-2" type="text" placeholder="e.g Make coffee">
+                                <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                    aria-hidden="true"></button>
+                            </div>
+                            <input class="form-control add-task" type="text" placeholder="e.g Drink coffee and smile">
+                        </div>
+                        <div class="mb-3 d-flex justify-content-end gap-2">
+                            <button type="button" class="btn btn-light" data-bs-dismiss="modal">Close</button>
+                            <button class="btn btn-primary" type="submit" onclick="editTask()">Save Changes</button>
+                        </div>
+
+                    </form>
+
+                </div>
+            </div><!-- /.modal-content -->
+        </div><!-- /.modal-dialog -->
+    </div><!-- /.modal -->
+    <!-- edit task modal end -->
+
+    <!-- Add task modal start-->
+    <div id="standard-addtask-modal" class="modal fade" tabindex="-1" role="dialog"
+        aria-labelledby="standard-modalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content" type="content">
+                <div class="modal-body">
+                    <form action="#" class="ps-3 pe-3">
+
+                        <div class="mb-3">
+                            <label for="" class="form-label text-white">Title</label>
+                            <input class="form-control add-task" type="text" id="newTaskTitle" value="" autocomplete="on" required=""
+                                placeholder="Task Titile">
+                        </div>
+                        <label for="" class="form-label text-white">Descirption</label>
+                        <div class=" mb-3">
+                            <textarea class="form-control add-task task-description" id="newTaskDescription" value="" autocomplete="on" placeholder="e.g Reasearch and analysis of SEO"></textarea>
+                        </div>
+                        <div class="mb-3 subtasks">
+                            <label for="" class="form-label text-white">Subtasks</label>
+                            <div class="d-flex gap-2 align-items-center justify-content-center">
+                                <input class="form-control add-task mb-2" type="text" id="subTask1"
+                                    placeholder="e.g Make coffee">
+                                <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                    aria-hidden="true"></button>
+                            </div>
+                            <input class="form-control add-task" type="text" id="subTask2"
+                                placeholder="e.g Drink coffee and smile">
+                        </div>
+                        <div class="mb-3 text-center">
+                            <button class="btn btn-primary" type="submit" id="addTask">Create Task</button>
+                        </div>
+
+                    </form>
+
+                </div>
+            </div><!-- /.modal-content -->
+        </div><!-- /.modal-dialog -->
+    </div><!-- /.modal -->
+    <!-- Add task modal end -->
+
+    <!-- bundle -->
+    <script src="assets/js/vendor.min.js"></script>
+    <script src="assets/js/app.min.js"></script>
+    
+    <script type="module" src="assets/js/index.js"></script>
+    <script type="module" src="/firebase/init.js"></script>
+    <script type="module" src="/main.js"></script>
+  </body>
+</html>

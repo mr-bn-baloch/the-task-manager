@@ -1,0 +1,40 @@
+.leftside-menu, .navbar-custom {
+    background-color: #2c2c38 !important;
+    box-shadow: none;
+}
+
+.content-page {
+    background-color: #21212D;
+}
+
+.card {
+    background-color: #2c2c38;
+    box-shadow: none;
+    height: 10rem;
+}
+
+.fade {
+    background-color: transparent;
+}
+
+.details-modal {
+    width: 430px;
+}
+
+.form-check {
+    background-color: #21212d;
+    height: 40px;
+    border-radius: 3px;
+}
+
+.form-check-label {
+    margin-top: 10px;
+}
+
+.add-task {
+    border: 1px solid #8391A2 !important;
+}
+
+.task-description {
+    height: 8rem !important;
+}
