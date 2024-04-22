@@ -1,3 +1,5 @@
+import { doc } from "firebase/firestore"
+
 const tasksRow = document.querySelector("#tasksRow")
 const addTaskContainer = document.querySelector("#addTaskContainer")
 const addnewTask = document.querySelector("#addTask")
@@ -20,10 +22,11 @@ addTaskContainer.addEventListener("click", function() {
     newTaskDescription.value = ""
 });
 
+let newTask;
 addnewTask.addEventListener("click", function () {
 
     if (newTaskTitle.value != "") {
-        let newTask = document.createElement("div")
+        newTask = document.createElement("div")
         newTask.className = "col-lg-3"
 
         newTask.innerHTML = `
@@ -67,12 +70,13 @@ addnewTask.addEventListener("click", function () {
     }
 });
 
-function renderTasks() {
+function renderTasks(value, id, description, status) {
 
-    if (newTaskTitle.value != "") {
-        let newTask = document.createElement("div")
+    if (value != "") {
+        newTask = document.createElement("div")
         newTask.className = "col-lg-3"
-
+        newTask.id = id
+        
         newTask.innerHTML = `
         <div class="card widget-flat">
             <div class="card-body">
@@ -104,8 +108,9 @@ function renderTasks() {
                         </svg>
                     </div>
                 </div>
-                <h3 class="mt-2 mb-2"> ${newTaskTitle.value} </h3>
-                <h4 class="mb-0 text-muted"> ${newTaskDescription.value} </h4>
+                <h3 class="mt-2 mb-2"> ${value} </h3>
+                <h4 class="mb-0 text-muted"> ${description} </h4>
+                <h4 class="mb-0 text-muted"> The status of Task is: ${status} </h4>
             </div>
         </div>`
         
@@ -128,8 +133,14 @@ function createNewDashboard() {
     }
 }
 
-function viewTaskDetails() {
-    console.log("clicked")
+const modalTitle = document.querySelector(".modal-title")
+const modalDescription = document.querySelector(".modal-description")
+const taskStatus = document.querySelector(".status")
+
+function viewTaskDetails(title, description, status) {
+    modalTitle.innerText = title
+    modalDescription.innerText = description
+    taskStatus.innerText = `Status: ${status}`
 }
 
 function editTask() {
@@ -146,6 +157,7 @@ export {
     addnewTask,
     newTaskTitle,
     newTaskDescription,
+    newTask,
     currentDashboard,
     parentDashboard,
     dashboardName,
@@ -153,5 +165,6 @@ export {
     taskDetailsModal,
     newTaskModal,
     editTaskModal,
-    renderTasks
+    renderTasks,
+    viewTaskDetails
 };
