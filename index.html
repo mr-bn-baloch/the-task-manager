@@ -15,7 +15,7 @@
     <!-- App css -->
     <link href="assets/css/icons.min.css" rel="stylesheet" type="text/css" />
     <link href="assets/css/app.min.css" rel="stylesheet" type="text/css" id="app-style" />
-    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="/assets/css/style.css">
   </head>
   <body class="loading" data-layout-color="dark" data-leftbar-theme="dark" data-layout-mode="fluid"
     data-rightbar-onstart="true">
@@ -133,7 +133,7 @@
         <div class="modal-dialog modal-dialog-centered">
             <div class="modal-content details-modal p-1">
                 <div class="modal-header">
-                    <h4 class="modal-title" id="standard-modalLabel"></h4>
+                    <h4 class="modal-title" id="standard-modalLabel">Title</h4>
                 </div>
                 <div class="modal-body">
                     <p class="modal-description">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Quisquam aliquid incidunt atque asperiores
@@ -142,24 +142,24 @@
                     <h5>Subtasks</h5>
                     <div class="form-check mb-1">
                         <div class="ms-2">
-                            <input class="form-check-input mt-2" type="checkbox" value="" id="flexCheckChecked" checked>
-                            <label class="form-check-label" for="flexCheckChecked">
+                            <input class="form-check-input mt-2" type="checkbox" value="" id="flexCheckChecked1" checked>
+                            <label class="form-check-label" for="flexCheckChecked1">
                                 Checked checkbox
                             </label>
                         </div>
                     </div>
                     <div class="form-check mb-1">
                         <div class="ms-2">
-                            <input class="form-check-input mt-2" type="checkbox" value="" id="flexCheckChecked" checked>
-                            <label class="form-check-label" for="flexCheckChecked">
+                            <input class="form-check-input mt-2" type="checkbox" value="" id="flexCheckChecked2" checked>
+                            <label class="form-check-label" for="flexCheckChecked2">
                                 Checked checkbox
                             </label>
                         </div>
                     </div>
                     <div class="form-check">
                         <div class="ms-2">
-                            <input class="form-check-input mt-2" type="checkbox" value="" id="flexCheckChecked" checked>
-                            <label class="form-check-label" for="flexCheckChecked">
+                            <input class="form-check-input mt-2" type="checkbox" value="" id="flexCheckChecked3" checked>
+                            <label class="form-check-label" for="flexCheckChecked3">
                                 Checked checkbox
                             </label>
                         </div>
@@ -185,13 +185,11 @@
 
                         <div class="mb-3">
                             <label for="" class="form-label text-white">Title</label>
-                            <input class="form-control add-task" type="text" required="" placeholder="Task Titile">
+                            <input class="form-control add-task" id="edit-title" type="text" placeholder="Task Titile">
                         </div>
                         <label for="" class="form-label text-white">Descirption</label>
                         <div class=" mb-3">
-                            <textarea class="form-control add-task task-description" value="Lorem, ipsum dolor sit amet consectetur adipisicing elit. Quisquam aliquid incidunt atque asperiores
-                        rerum facilis in necessitatibus, fuga magni a similique nam corporis hic doloribus, quasi minus
-                        voluptate aperiam? Distinctio." placeholder="e.g Reasearch and analysis of SEO"></textarea>
+                            <textarea class="form-control add-task task-description" id="edit-description" value="" placeholder="e.g Reasearch and analysis of SEO"></textarea>
                         </div>
                         <div class="mb-3 subtasks">
                             <label for="" class="form-label text-white">Subtasks</label>
@@ -204,7 +202,7 @@
                         </div>
                         <div class="mb-3 d-flex justify-content-end gap-2">
                             <button type="button" class="btn btn-light" data-bs-dismiss="modal">Close</button>
-                            <button class="btn btn-primary" type="submit" onclick="editTask()">Save Changes</button>
+                            <button class="btn btn-primary" onclick="editTask()">Save Changes</button>
                         </div>
 
                     </form>
@@ -224,16 +222,16 @@
                     <form action="#" class="ps-3 pe-3">
 
                         <div class="mb-3">
-                            <label for="" class="form-label text-white">Title</label>
+                            <label class="form-label text-white">Title</label>
                             <input class="form-control add-task" type="text" id="newTaskTitle" value="" autocomplete="on" required=""
                                 placeholder="Task Titile">
                         </div>
-                        <label for="" class="form-label text-white">Descirption</label>
+                        <label class="form-label text-white">Descirption</label>
                         <div class=" mb-3">
                             <textarea class="form-control add-task task-description" id="newTaskDescription" value="" autocomplete="on" placeholder="e.g Reasearch and analysis of SEO"></textarea>
                         </div>
                         <div class="mb-3 subtasks">
-                            <label for="" class="form-label text-white">Subtasks</label>
+                            <label class="form-label text-white">Subtasks</label>
                             <div class="d-flex gap-2 align-items-center justify-content-center">
                                 <input class="form-control add-task mb-2" type="text" id="subTask1"
                                     placeholder="e.g Make coffee">
@@ -244,7 +242,7 @@
                                 placeholder="e.g Drink coffee and smile">
                         </div>
                         <div class="mb-3 text-center">
-                            <button class="btn btn-primary" type="submit" id="addTask">Create Task</button>
+                            <button class="btn btn-primary" onclick="addNewTask()">Create Task</button>
                         </div>
 
                     </form>
@@ -259,7 +257,7 @@
     <script src="assets/js/vendor.min.js"></script>
     <script src="assets/js/app.min.js"></script>
     
-    <script type="module" src="assets/js/index.js"></script>
+    <script src="assets/js/index.js"></script>
     <script type="module" src="/firebase/init.js"></script>
     <script type="module" src="/main.js"></script>
   </body>
