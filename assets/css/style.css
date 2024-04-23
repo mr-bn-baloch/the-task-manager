@@ -11,6 +11,7 @@
     background-color: #2c2c38;
     box-shadow: none;
     min-height: 12rem;
+    cursor: pointer;
 }
 
 .fade {

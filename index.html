@@ -69,7 +69,7 @@
                             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-hidden="true"></button>
                         </div>
 
-                        <form action="#" class="ps-3 pe-3">
+                        <form action="#" class="ps-3 pe-3 form">
 
                             <div class="mb-3">
                                 <label for="" class="form-label">Dashboard Name</label>
@@ -77,7 +77,7 @@
                                     placeholder="Dashboard Name">
                             </div>
                             <div class="mb-3 text-center">
-                                <button class="btn rounded-pill btn-primary" type="submit"
+                                <button class="btn rounded-pill btn-primary"
                                     onclick="createNewDashboard()">Create</button>
                             </div>
 
@@ -181,7 +181,7 @@
         <div class="modal-dialog modal-dialog-centered">
             <div class="modal-content" type="content">
                 <div class="modal-body">
-                    <form action="#" class="ps-3 pe-3">
+                    <form action="#" class="ps-3 pe-3 form">
 
                         <div class="mb-3">
                             <label for="" class="form-label text-white">Title</label>
@@ -219,7 +219,7 @@
         <div class="modal-dialog modal-dialog-centered">
             <div class="modal-content" type="content">
                 <div class="modal-body">
-                    <form action="#" class="ps-3 pe-3">
+                    <form action="#" class="ps-3 pe-3 form">
 
                         <div class="mb-3">
                             <label class="form-label text-white">Title</label>
@@ -235,13 +235,12 @@
                             <div class="d-flex gap-2 align-items-center justify-content-center">
                                 <input class="form-control add-task mb-2" type="text" id="subTask1"
                                     placeholder="e.g Make coffee">
-                                <button type="button" class="btn-close" data-bs-dismiss="modal"
-                                    aria-hidden="true"></button>
                             </div>
                             <input class="form-control add-task" type="text" id="subTask2"
                                 placeholder="e.g Drink coffee and smile">
                         </div>
-                        <div class="mb-3 text-center">
+                        <div class="mb-3 d-flex justify-content-end gap-2">
+                            <button type="button" class="btn btn-light" data-bs-dismiss="modal">Close</button>
                             <button class="btn btn-primary" onclick="addNewTask()">Create Task</button>
                         </div>
 

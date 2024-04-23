@@ -20,12 +20,19 @@ addTaskContainer.addEventListener("click", function() {
     newTaskDescription.value = ""
 });
 
+const form = document.querySelector(".form").addEventListener("submit", (e)=> {
+    e.preventDefault()
+})
+
 function addNewTask() {
 
     if (newTaskTitle.value != "") {
         let newTask;
         newTask = document.createElement("div")
         newTask.className = "col-lg-3"
+        newTask.id = "none"
+        newTask.setAttribute("data-title", newTaskTitle.value)
+        newTask.setAttribute("data-description", newTaskDescription.value)
 
         newTask.innerHTML = `
         <div class="card widget-flat">
@@ -50,7 +57,7 @@ function addNewTask() {
                             <path d="m15 5 4 4" />
                         </svg>
 
-                        <svg onclick="deleteTask()" width="20" height="20" viewBox="0 0 15 15"
+                        <svg class="delete-task" width="20" height="20" viewBox="0 0 15 15"
                             fill="none" xmlns="http://www.w3.org/2000/svg">
                             <path
                                 d="M5.5 1C5.22386 1 5 1.22386 5 1.5C5 1.77614 5.22386 2 5.5 2H9.5C9.77614 2 10 1.77614 10 1.5C10 1.22386 9.77614 1 9.5 1H5.5ZM3 3.5C3 3.22386 3.22386 3 3.5 3H5H10H11.5C11.7761 3 12 3.22386 12 3.5C12 3.77614 11.7761 4 11.5 4H11V12C11 12.5523 10.5523 13 10 13H5C4.44772 13 4 12.5523 4 12V4L3.5 4C3.22386 4 3 3.77614 3 3.5ZM5 4H10V12H5V4Z"
@@ -65,6 +72,7 @@ function addNewTask() {
 
         addTaskContainer.before(newTask)
         addTaskModal.hide()
+        location.reload()
     }
 }
 
@@ -92,13 +100,17 @@ function viewTaskDetails(title, description, status) {
     modalDescription.innerText = description
     taskStatus.innerText = `Status: ${status}`
 }
+
 const editTitle = document.querySelector("#edit-title")
 const editDescription = document.querySelector("#edit-description")
-function editTask(title, description, status) {
+function editTask(title, description) {
     editTitle.value = title
     editDescription.innerText = description
-}
+    if(editTitle.value != title) {
+        form.editTitle.value = editTitle.value
+        console.log("title")
+        editTitle.value = title
+    }
 
-function greet() {
-    console.log("Hi")
+    editTaskModal.hide()
 }
