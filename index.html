@@ -181,11 +181,11 @@
         <div class="modal-dialog modal-dialog-centered">
             <div class="modal-content" type="content">
                 <div class="modal-body">
-                    <form action="#" class="ps-3 pe-3 form">
+                    <form action="#" class="ps-3 pe-3 form edit-task-modal">
 
                         <div class="mb-3">
                             <label for="" class="form-label text-white">Title</label>
-                            <input class="form-control add-task" id="edit-title" type="text" placeholder="Task Titile">
+                            <input class="form-control add-task" id="edit-title" type="text" required="" placeholder="Task Titile">
                         </div>
                         <label for="" class="form-label text-white">Descirption</label>
                         <div class=" mb-3">
@@ -202,7 +202,7 @@
                         </div>
                         <div class="mb-3 d-flex justify-content-end gap-2">
                             <button type="button" class="btn btn-light" data-bs-dismiss="modal">Close</button>
-                            <button class="btn btn-primary" onclick="editTask()">Save Changes</button>
+                            <button class="btn btn-primary" id="saveChanges" >Save Changes</button>
                         </div>
 
                     </form>

@@ -15,14 +15,17 @@ const editTaskModal = new bootstrap.Modal(document.querySelector("#standard-edit
 
 const card = document.querySelector(".card-body");
 
-addTaskContainer.addEventListener("click", function() {
+addTaskContainer.addEventListener("click", function () {
     newTaskTitle.value = ""
     newTaskDescription.value = ""
 });
 
-const form = document.querySelector(".form").addEventListener("submit", (e)=> {
-    e.preventDefault()
-})
+const form = document.querySelectorAll(".form")
+form.forEach(task => {
+    task.addEventListener('sbumit', (e) => {
+        e.preventDefault()
+    });
+});
 
 function addNewTask() {
 
@@ -103,14 +106,15 @@ function viewTaskDetails(title, description, status) {
 
 const editTitle = document.querySelector("#edit-title")
 const editDescription = document.querySelector("#edit-description")
-function editTask(title, description) {
+let editId
+function editTask(title, description, id) {
     editTitle.value = title
     editDescription.innerText = description
-    if(editTitle.value != title) {
+    if (editTitle.value != title) {
         form.editTitle.value = editTitle.value
         console.log("title")
         editTitle.value = title
     }
-
+    editId = id
     editTaskModal.hide()
 }

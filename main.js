@@ -1,4 +1,4 @@
-import { doc, deleteDoc, collection, addDoc } from "firebase/firestore"
+import { doc, deleteDoc, collection, addDoc, setDoc } from "firebase/firestore"
 import "./firebase/database.js"
 import { data, db } from "./firebase/database.js"
 
@@ -29,7 +29,7 @@ function renderTasks(title, id, description, status) {
                             <circle cx="12" cy="12" r="3" />
                         </svg>
 
-                        <svg onclick="editTask(' ${title} ',' ${description} ',' ${status} ')" data-bs-toggle="modal"
+                        <svg onclick="editTask(' ${title} ',' ${description} ',' ${id} ')" data-bs-toggle="modal"
                             data-bs-target="#standard-edittask-modal" xmlns="http://www.w3.org/2000/svg"
                             width="18" height="18" viewBox="0 0 24 24" fill="none"
                             stroke="currentColor" stroke-width="2" stroke-linecap="round"
@@ -94,8 +94,29 @@ window.onbeforeunload = function () {
             })
         }
     }
-    location.reload()
 };
+
+// edit task details start
+
+const saveChanges = document.querySelector("#saveChanges")
+
+saveChanges.addEventListener("click", function () {
+    data.forEach((task) => {
+        if (task.id == editId.trim()) {
+            const docRef = doc(db, "tasks", task.id)
+            console.log(docRef)
+            console.log(editTitle.value)
+            setDoc(docRef, {
+                title: editTitle.value,
+                description: editDescription.value,
+                status: "false"
+            })
+        }
+    })
+    editTaskModal.hide()
+})
+
+// edit task details end
 
 // delete task start
 const Tasks = document.querySelectorAll(".delete-task")
